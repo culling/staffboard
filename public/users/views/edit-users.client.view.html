@@ -1,0 +1,130 @@
+
+<link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.css" />
+
+<script type="text/javascript" src="/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<section data-ng-controller="UsersController" data-ng-init="findOne()">
+    <h1>Edit User</h1>
+
+
+<form data-ng-submit="updateRedirect()" novalidate>
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+
+            <div class="col-md-3">
+                <div>
+                    <h3>Basic Settings</h3>    
+                </div>                
+                <div>
+                    <label for="firstName">First Name</label>
+                    <div>
+                        <input type="text" data-ng-model="user.firstName" id="firstName" placeholder="firstName" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="lastName">Last Name</label>
+                    <div>
+                        <input type="text" data-ng-model="user.lastName" id="lastName" placeholder="lastName" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email">Email</label>
+                    <div>
+                        <input type="text" data-ng-model="user.email" id="email" placeholder="email" required>
+                    </div>
+                </div>
+
+                <div >
+                    <label for="username">username</label>
+                    <div>
+                        <input type="text" data-ng-model="user.username" id="username" placeholder="username" required>
+                    </div>
+                </div>
+                <!-- div >
+                    <label for="password">password</label>
+                    <div>
+                        <input type="text" data-ng-model="user.password" id="password" placeholder="password" required>
+                    </div>
+                </div -->
+            </div>
+            
+            <div class="col-md-3">
+                <h3>Additional Settings</h3>
+
+                <div>
+                    <label for="website">website</label>
+                    <div>
+                        <input type="text" data-ng-model="user.website" id="website" placeholder="website" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="role">role</label>
+                    <div>
+                        <input type="text" data-ng-model="user.role" id="role" placeholder="role" required>
+                    </div>
+                </div>		          
+
+                <div>
+                    <label for="description">description</label>
+                    <div>
+                        <input type="text" data-ng-model="user.description" id="description" placeholder="description" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="title">title</label>
+                    <div>
+                        <input type="text" data-ng-model="user.title" id="title" placeholder="title" required>
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="officePhone">officePhone</label>
+                    <div>
+                        <input type="text" data-ng-model="user.officePhone" id="officePhone" placeholder="officePhone" required>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <h3>Organisation</h3>
+                <div>
+                    <label for="department">department</label>
+                    <div>
+                        <input type="text" data-ng-model="user.department" id="department" placeholder="department" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="organisation">organisation</label>
+                    <div>
+                        <input type="text" data-ng-model="user.organisation" id="organisation" placeholder="organisation" required>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-1"></div>
+
+    <div>
+        <input type="submit" value="Update">
+    </div>
+    <div data-ng-show="error">
+        <strong data-ng-bind="error"></strong>
+    </div>
+</div>
+</form>
+
+<button ng-click="deleteRedirect()">Delete</button>
+</section>

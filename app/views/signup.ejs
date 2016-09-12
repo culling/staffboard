@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        
+        <% for (var i in messages) { %> 
+            <div class="flash"><%= messages[i] %></div>
+        <% } %>
+        <form action="/signup" method="post">
+            <div>
+                <label>First Name</label>
+                <input type='text' name="firstName"/>
+            </div>
+            <div>
+                <label>Last Name</label>
+                <input type='text' name="lastName"/>
+            </div>
+            <div>
+                <label>Email:</label>
+                <input type='text' name="email"/>
+            </div>
+            <div>
+                <label>Username:</label>
+                <input type='text' name="username"/>
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type='password' name="password"/>
+            </div>
+
+            <h3>Additional Settings</h3>
+            <div>
+                <label>Website:</label>
+                <input type='text' name="website"/>
+            </div>
+            <div>
+                <label>Role:</label>
+                <select name="role">
+                    <option value="User">   User </option>
+                    <option value="Admin">  Admin</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Description:</label>
+                <input type='text' name="description"/>
+            </div>            
+
+            <div>
+                <label>Title:</label>
+                <input type='text' name="title"/>
+            </div>
+
+            <div>
+                <label>Department:</label>
+                <input type='text' name="department"/>
+            </div>
+
+            <div>
+                <label>Organisation:</label>
+                <input type='text' name="organisation"/>
+            </div>
+
+            <div>
+                <label>Office Phone:</label>
+                <input type='text' name="officePhone"/>
+            </div>
+
+            <div>
+                <input type="submit" value="Create Users" />
+            </div>
+
+            
+        </form>
+    </body>
+</html>
+

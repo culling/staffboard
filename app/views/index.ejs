@@ -1,0 +1,108 @@
+<html>
+    <head>
+        
+        <title>In Out board v0.0.3</title>
+ 
+        <link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.css" />
+
+        <script type="text/javascript" src="/lib/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+                    
+        <style type="text/css">
+        @media screen and (min-width: 900px) {
+            .show-under-900px {
+                display: none;
+            }
+            .hide-under-900px {
+                display: table-cell;
+            }
+        }
+        @media screen and (max-width: 900px) {
+            .show-under-900px {
+                display: table-cell;
+            }
+            .hide-under-900px {
+                display: none;
+            }
+        }
+
+        @media only screen and (max-device-width: 800px){
+                .show-under-900px {
+                display: table-cell;
+            }
+            .hide-under-900px {
+                display: none;
+            }
+        }
+
+        </style>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-9">
+                <h1>Staffboard v0.0.3</h1>
+            </div>
+            <div class="col-md-1">
+                
+            </div>
+        </div>
+
+        <% if (user) { %>
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-1">
+                    <a href="/signout">Sign Out</a>
+                </div>
+            </div>
+        <% } else { %>
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-1">
+                    <a href="/signup">Sign up</a>        
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-1">
+                    <a href="/signin">Sign In</a>
+                </div>
+            </div>
+        <% } %>
+
+        <script type="text/javascript">
+            window.user = <%- user || 'null'  %>;
+        </script>
+        <br>
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-10">
+                <section ng-view></section>
+            </div>
+        </div>
+
+        <!-- standard javascripts -->
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="/lib/angular/angular.js"></script>
+        <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+        <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+        <script type="text/javascript"  href="/lib/bootstrap/dist/js/bootstrap.js"></script> 
+
+        <!-- Users -->
+        <script type="text/javascript" src="/users/users.client.module.js"></script>
+        <script type="text/javascript" src="/users/services/authentication.client.service.js"></script>
+        <script type="text/javascript" src="/users/services/users.client.service.js"></script>
+        <script type="text/javascript" src="/users/services/socket.client.service.js"></script>
+        <script type="text/javascript" src="/users/controllers/users.client.controller.js"></script>
+        <script type="text/javascript" src="/users/config/users.client.routes.js"></script>
+
+        <script type="text/javascript" src="/application.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,209 @@
+
+        <!-- div ng-app="mean" -->
+
+
+
+<div>
+    <section data-ng-controller="UsersController" data-ng-init="find(); socket();">
+    
+
+    <div class="row">
+        <!--div class="col-md-1" >        
+        </div -->
+        <div data-ng-hide="name == null" class="col-md-11" >
+            Welcome {{name}}
+        </div>
+    </div>
+
+
+    <div data-ng-show="authentication.user" >
+        <h1>Hello <span data-ng-bind="authentication.user.fullName"></span></h1>
+
+    </div>
+        
+
+
+
+
+                    <h1>Users</h1>
+
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                                <input type="text" ng-model="searchText" placeholder="Search">
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="table-responsive">
+                        <table id="UsersTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        
+                                        Quick Status
+                                        
+                                    </th>
+
+                                    <th>
+                                        <a href="" ng-click="sortType = 'fullName'; sortReverse = !sortReverse">
+                                        Full Name
+                                        <span ng-show="sortType == 'fullName' && !sortReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'fullName' &&  sortReverse" class="fa fa-caret-up"></span>
+                                        </a>
+                                    </th>
+                                    <th>
+                                        <a href="" ng-click="sortType = 'email'; sortReverse = !sortReverse">
+                                        Email
+                                        <span ng-show="sortType == 'email' && !sortReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'email' &&  sortReverse" class="fa fa-caret-up"></span>                                
+                                        </a>
+                                    </th>
+
+
+                                    <th >
+                                        <a href="" ng-click="sortType = 'officePhone'; sortReverse = !sortReverse">
+                                        Office Phone
+                                        <span ng-show="sortType == 'officePhone' && !sortReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'officePhone' &&  sortReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                    </th>
+
+                                    <th class="hide-under-900px">
+                                        <a href="" ng-click="sortType = 'title'; sortReverse = !sortReverse">
+                                        Title
+                                        <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'title' &&  sortReverse" class="fa fa-caret-up"></span>
+                                        </a>
+                                    </th>
+
+                                    <th class="hide-under-900px">
+                                        <a href="" ng-click="sortType = 'department'; sortReverse = !sortReverse">
+                                        Department
+                                        <span ng-show="sortType == 'department' && !sortReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'department' &&  sortReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                    </th>
+
+                                    <th class="hide-under-900px">
+                                        <a href="" ng-click="sortType = 'description'; sortReverse = !sortReverse">
+                                        Description
+                                        <span ng-show="sortType == 'description' && !sortReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'description' &&  sortReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                    </th>
+
+
+                                    <th class="hide-under-900px">
+                                        <a href="" ng-click="sortType = 'status'; sortReverse = !sortReverse">
+                                        Status
+                                        <span ng-show="sortType == 'status' && !sortReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'status' &&  sortReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                    </th>
+                                    <th class="hide-under-900px">
+
+                                    </th>
+                                    
+
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="user in users | orderBy:sortType:sortReverse | filter:searchText">
+                                    <td>                            
+
+                                        <button type="button" class="btn btn-info btn-lg" style="width:100%" data-toggle="modal" data-target="#myModal{{user.id}}">
+                                            
+                                            
+                                        <span ng-show="user.status == 'No Status'"  class="fa fa-gears"         style="color:black"></span>
+                                        <span ng-show="user.status == 'In'"         class="fa fa-circle"        style="color:green"></span>
+                                        <span ng-show="user.status == 'Out'"        class="fa fa-circle"        style="color:red"></span>
+                                        <span ng-show="user.status == 'Away'"       class="fa fa-plane"         style="color:black"></span>
+                                        <span ng-show="user.status == 'On Call'"    class="fa fa-phone-square"  style="color:green"></span>
+                                        <span ng-show="user.status == 'On a Call'"  class="fa fa-phone"         style="color:red"></span>
+                                            {{user.status}}
+                                            </button>
+
+                                        <!-- Modal -->
+                                        <div id="myModal{{user.id}}" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+
+                                                <!-- Modal content-->
+                                                <section data-ng-controller="UsersController" data-ng-init="findOneById(user.id)">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Set Status</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                                <form data-ng-submit="update()" novalidate>
+                                                                    <div>
+                                                                        <label for="status">Status</label>
+                                                                        <div>
+                                                                            <!-- input type="text" data-ng-model="user.status" id="status" placeholder="No Status" required -->
+                                                                            <select name="status" data-ng-model="user.status" >
+                                                                                <option value="In"          >In</option>
+                                                                                <option value="Out"         >Out</option>
+                                                                                <option value="Away"        >Away</option>
+                                                                                <option value="On Call"     >On Call</option>
+                                                                                <!-- option value="On a Call"   >On a Call</option -->
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        
+                                                        <button type="button" class="btn btn-default" ng-click="update();sendStatusChange()" data-dismiss="modal">Save</button>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                    </div>
+                                                </div>
+                                                </section>
+
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                       
+                                    <td>
+                                        <div class="hide-under-900px"> {{user.fullName}}</div>
+                                        <div class='show-under-900px'><strong >{{user.fullName}}</strong></div>
+                                    </td>
+                                    <td>
+                                        <div class='hide-under-900px'> <a ng-href="mailto:{{user.email}}">{{user.email}}</a></div>
+                                        <div class='show-under-900px'> <a ng-href="mailto:{{user.email}}"><strong>{{user.email}}</strong></a></div>
+                                    </td>
+                                    
+                                    <td >
+                                        <div class='hide-under-900px'>{{user.officePhone}}</div >
+                                        <div class='show-under-900px'><strong>{{user.officePhone}}</strong>
+                                    </td>
+                                    
+                                    <td class="hide-under-900px">{{user.title}}</td>
+                                    <td class="hide-under-900px">{{user.department}}</td>
+                                    <td class="hide-under-900px">{{user.description}}</td>
+                                    <td class="hide-under-900px">{{user.status}}</td>
+
+                                    <td class="hide-under-900px">
+                                        <a href="/#!/users/{{user.id}}/edit" >
+                                            <button type="button" class="btn btn-info btn-lg">Edit</button>   
+                                        </a >
+                                    </td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table> 
+                    </div>
+
+                    <div data-ng-hide="!users || users.length">
+                        No Users - <a href ="/signup"> click to create user</a>
+                    </div>
+
+                </section>
+            </div>
+</body>
