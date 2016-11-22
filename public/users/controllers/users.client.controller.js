@@ -4,9 +4,6 @@ angular.module('users').controller('UsersController', ['$scope',
     'Authentication',
     'Users',
     function($scope, $routeParams, $location, Authentication, Users){
-        
-        
-        
         $scope.statusChanges    =   [];
         $scope.socket = function(){
             var socket = io.connect('http://localhost:3000');    
@@ -26,15 +23,9 @@ angular.module('users').controller('UsersController', ['$scope',
         $scope.$on('$destroy', function(){
             socket.removeListener('chatMessage');
         });
-        
-
-
 
         $scope.name = Authentication.user ? Authentication.user.fullName : '' ;
         $scope.authentication = Authentication.user;
-
-        //console.log('called');
-        $scope.test = "test";
 
         $scope.find = function(){ 
             $scope.users = Users.query();
@@ -49,12 +40,6 @@ angular.module('users').controller('UsersController', ['$scope',
         $scope.sortReverse  = false;  // set the default sort order
         $scope.searchText   = '';     // set the default search/filter term
 
-
-
-
-
-
-
         $scope.findOne = function(){
              console.log("test-findOne");
              $scope.user = Users.get({
@@ -64,14 +49,12 @@ angular.module('users').controller('UsersController', ['$scope',
 
 
         $scope.findOneById = function(userId){
-             //console.log("test-findOne");
              Users.get({userId});
         };
 
 
 
         $scope.update = function (){
-            console.log("test-update");
             $scope.user.$update(function(){
 
             }, function(errorResponse){
@@ -81,7 +64,6 @@ angular.module('users').controller('UsersController', ['$scope',
 
 
         $scope.updateRedirect = function (){
-            console.log("test-update");
             $scope.user.$update(function(){
                 $location.path('users/' + $scope.user_id );  
             }, function(errorResponse){
@@ -91,15 +73,11 @@ angular.module('users').controller('UsersController', ['$scope',
 
 
         $scope.deleteRedirect = function(){
-            console.log('test-delete');
             $scope.user.$delete(function(){
                 $location.path('users/' + $scope.user_id);
             }, function(errorResponse){
                 $scope.error = errorResponse.data.message;
             } );
         };
-
-        
-  
     }
 ]);

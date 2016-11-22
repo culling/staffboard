@@ -1,6 +1,6 @@
 {
-    "name":         "mean",
-    "version":        "0.0.2",
+    "name":         "staffboard",
+    "version":        "1.0.0",
     "dependencies":   {
         "angular":          "~1.2",
         "angular-route":    "~1.2",

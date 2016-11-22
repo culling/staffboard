@@ -1,4 +1,4 @@
-var mainApplicationModuleName = 'mean';
+var mainApplicationModuleName = 'staffboard';
 var MainApplicationModule = angular.module(mainApplicationModuleName,
  [ 'ngResource', 'ngRoute', 'users']);
 

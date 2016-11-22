@@ -29,11 +29,9 @@ exports.render = function (req, res){
         console.log(req.session.lastVisit);
     }
     req.session.lastVisit = new Date();
-    //End Sessions and session logging - page p77
     
     res.render('index',  {
         title : 'Hello World',
-        //userFullName: req.user ? req.user.fullName : ''
         user: JSON.stringify(req.user)
     });
 
@@ -188,7 +186,6 @@ exports.userStatusChange          = function(io, socket){
         statusSet:      Date.now(),
         user:           socket.request.user,
         userId:         socket.request.user.id
-        
     });
 
     socket.on('userStatusChange', function(statusChange) {

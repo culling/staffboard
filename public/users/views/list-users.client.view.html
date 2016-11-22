@@ -1,15 +1,8 @@
-
-        <!-- div ng-app="mean" -->
-
-
-
 <div>
     <section data-ng-controller="UsersController" data-ng-init="find(); socket();">
     
 
     <div class="row">
-        <!--div class="col-md-1" >        
-        </div -->
         <div data-ng-hide="name == null" class="col-md-11" >
             Welcome {{name}}
         </div>
@@ -20,11 +13,6 @@
         <h1>Hello <span data-ng-bind="authentication.user.fullName"></span></h1>
 
     </div>
-        
-
-
-
-
                     <h1>Users</h1>
 
                     <form>
@@ -105,9 +93,6 @@
                                     <th class="hide-under-900px">
 
                                     </th>
-                                    
-
-
 
                                 </tr>
                             </thead>
@@ -150,7 +135,6 @@
                                                                                 <option value="Out"         >Out</option>
                                                                                 <option value="Away"        >Away</option>
                                                                                 <option value="On Call"     >On Call</option>
-                                                                                <!-- option value="On a Call"   >On a Call</option -->
                                                                             </select>
                                                                         </div>
                                                                     </div>
@@ -201,7 +185,7 @@
                     </div>
 
                     <div data-ng-hide="!users || users.length">
-                        No Users - <a href ="/signup"> click to create user</a>
+                        No Users - <a href ="/signup"> click to create user</a> or sign in
                     </div>
 
                 </section>

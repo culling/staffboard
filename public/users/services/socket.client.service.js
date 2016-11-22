@@ -28,7 +28,5 @@ angular.module('users').service('Socket', ['Authentication', '$location', '$time
                 this.socket.removeListener(eventName);
             }
         }
-
-
     }
 ])
