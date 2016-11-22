@@ -20,4 +20,5 @@ Extract the zip file contents
 In a command prompt browse to the root of the folder run 
 In a command prompt browse to the root of the folder 
 
-by default it will display on localhost port 3000
+### Notes
+By default it will display on localhost port 3000
